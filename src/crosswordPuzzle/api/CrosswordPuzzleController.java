@@ -52,6 +52,9 @@ public class CrosswordPuzzleController {
 
     // 단어 입력 옵션
     private void insertWord() {
+        System.out.println("번호를 입력하세요");
+        int number = Integer.parseInt(scanner.nextLine());
+
         System.out.print("단어를 입력하세요: ");
         String word = scanner.nextLine();
 
@@ -73,7 +76,7 @@ public class CrosswordPuzzleController {
             return;
         }
 
-        boolean success = crosswordService.insertWord(word, x, y, direction);
+        boolean success = crosswordService.insertWord(number, word, x, y, direction);
         if (success) {
             System.out.println("단어가 보드에 성공적으로 삽입되었습니다.");
         } else {
