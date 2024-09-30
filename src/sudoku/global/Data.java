@@ -1,7 +1,7 @@
 package sudoku.global;
 
 public class Data {
-    static int[][] sudokuTableEasy = {
+    public static int[][] sudokuTableEasy = {
             {7, 2, 0, 8, 0, 5, 1, 6, 0},
             {0, 0, 5, 2, 0, 0, 0, 0, 0},
             {0, 1, 9, 0, 6, 0, 0, 3, 0},
@@ -13,7 +13,7 @@ public class Data {
             {0, 0, 3, 6, 5, 0, 8, 0, 0}
     };
 
-    int[][] sudokuTableEasyAnswer = {
+    public static int[][] sudokuTableEasyAnswer = {
             {7, 2, 3, 8, 9, 5, 1, 6, 2},
             {6, 8, 5, 2, 3, 1, 4, 7, 9},
             {2, 1, 9, 4, 6, 7, 5, 3, 8},
@@ -25,7 +25,7 @@ public class Data {
             {4, 7, 3, 6, 5, 2, 8, 9, 1}
     };
 
-    int[][] sudokuTableMiddle = {
+    public static int[][] sudokuTableMiddle = {
             {0, 0, 0, 9, 0, 0, 2, 0, 4},
             {0, 5, 4, 0, 0, 0, 0, 1, 0},
             {0, 0, 8, 3, 0, 0, 0, 9, 6},
@@ -37,7 +37,7 @@ public class Data {
             {3, 0, 0, 8, 0, 7, 0, 4, 0}
     };
 
-    int[][] sudokuTableMiddleAnswer = {
+    public static int[][] sudokuTableMiddleAnswer = {
             {6, 3, 7, 9, 1, 8, 2, 5, 4},
             {9, 5, 4, 6, 2, 7, 8, 1, 3},
             {2, 1, 8, 3, 4, 5, 7, 9, 6},
@@ -49,7 +49,7 @@ public class Data {
             {3, 2, 1, 8, 6, 7, 5, 4, 2}
     };
 
-    int[][] sudokuTableHard = {
+    public static int[][] sudokuTableHard = {
             {5, 0, 0, 0, 0, 0, 0, 7, 1},
             {0, 0, 0, 9, 0, 0, 4, 0, 0},
             {2, 0, 8, 5, 0, 0, 0, 0, 0},
@@ -61,7 +61,7 @@ public class Data {
             {1, 0, 0, 0, 0, 5, 0, 0, 3}
     };
 
-    int[][] sudokuTableHardAnswer = {
+    public static int[][] sudokuTableHardAnswer = {
             {5, 4, 3, 8, 6, 2, 9, 7, 1},
             {6, 1, 7, 9, 3, 8, 4, 2, 5},
             {2, 9, 8, 5, 7, 4, 3, 6, 9},
