@@ -28,30 +28,36 @@ public class Crossword {
         }
 
         // 힌트 사용
-        public void useHint() {
-            if (remainingHints > 0) {
-                remainingHints--;
-                System.out.println("힌트를 사용합니다. 남은 힌트: " + remainingHints);
-                for (CrosswordWord word : words) {
-                    System.out.println("힌트: " + word.getHint());
-                }
-            } else {
-                System.out.println("힌트를 모두 사용하였습니다.");
+    public void useHint(int problemNumber) {
+        if (remainingHints <= 0) {
+            System.out.println("더 이상 사용할 수 있는 힌트가 없습니다.");
+            return;
+        }
+
+        for (CrosswordWord word : words) {
+            if (word.getNumber() == problemNumber) {
+                System.out.println("힌트: " + word.getHint());
+                remainingHints--;  // 힌트 사용 시 남은 힌트 수 감소
+                System.out.println("남은 힌트 수: " + remainingHints);
+                return;
             }
         }
 
+        System.out.println("해당 문제 번호가 존재하지 않습니다.");
+    }
+
         // 단어 삽입
-        public boolean insertWord(int number, String wordStr, int x, int y, CrosswordDirection direction) {
+        public boolean insertWord(int problemNumber, String wordStr) {
             for (CrosswordWord word : words) {
-                if (word.getWord().equals(wordStr) && word.getX() == x && word.getY() == y && word.getDirection() == direction) {
-                    boolean success = board.insertWord(word);
-                    if (success) {
-                        System.out.println("단어를 맞췄습니다!");
+                if (word.getNumber() == problemNumber) {
+                    if (word.getWord().equals(wordStr)) {
+                        board.insertWord(word); // 단어를 보드에 삽입
+                        System.out.println("정답입니다! " + word.getDescription() + " 단어가 추가되었습니다.");
                         return true;
                     }
                 }
             }
-            System.out.println("단어가 맞지 않습니다.");
+            System.out.println("정답이 아닙니다. 다시 시도하세요.");
             return false;
         }
 
