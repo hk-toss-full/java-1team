@@ -2,6 +2,7 @@ package crosswordPuzzle.api;
 
 import crosswordPuzzle.application.CrosswordPuzzleService;
 import crosswordPuzzle.domain.CrosswordDirection;
+import crosswordPuzzle.utils.TimerThread;
 
 import java.util.Scanner;
 
@@ -19,11 +20,19 @@ public class CrosswordPuzzleController {
     public void run() {
         crosswordService.startGame();  // 게임 시작 및 보드 출력
 
+        TimerThread timerThread = new TimerThread(1200);
+        timerThread.start();
+
         while (true) {
             System.out.println("옵션을 선택하세요: ");
             System.out.println("1. 단어 입력");
             System.out.println("2. 힌트 사용");
             System.out.println("3. 게임 종료");
+
+            if (timerThread.isTimeUp()) {
+                System.out.println("제한 시간이 모두 지났습니다.");
+                return;
+            }
 
             int option = scanner.nextInt();
             scanner.nextLine();  // 개행 문자 처리
@@ -47,8 +56,11 @@ public class CrosswordPuzzleController {
                 System.out.println("모든 단어를 맞췄습니다! 게임을 성공적으로 완료하였습니다.");
                 break;
             }
+
         }
+        timerThread.stopTimer();
     }
+
 
     // 단어 입력 옵션
     private void insertWordByNumber() {
@@ -100,4 +112,5 @@ public class CrosswordPuzzleController {
 
         crosswordService.useHint(problemNumber); // 특정 문제 번호에 대한 힌트 사용
     }
+
 }

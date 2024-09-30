@@ -3,9 +3,11 @@ import crosswordPuzzle.application.CrosswordPuzzleService;
 import crosswordPuzzle.domain.Crossword;
 import crosswordPuzzle.domain.CrosswordDirection;
 import crosswordPuzzle.domain.CrosswordWord;
+import crosswordPuzzle.utils.TimerThread;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 
 public class CrosswordMain {
     public static void main(String[] args) {
@@ -28,7 +30,12 @@ public class CrosswordMain {
         CrosswordPuzzleService crosswordService = new CrosswordPuzzleService(crossword);
         CrosswordPuzzleController crosswordController = new CrosswordPuzzleController(crosswordService);
 
+        TimerThread timerThread = new TimerThread(1200);
+        timerThread.start();
+
         // 게임 실행
         crosswordController.run();
+
+        timerThread.stopTimer();
     }
 }
