@@ -5,17 +5,18 @@ public class Sudoku {
     private int[][] solutionBoard; // 정답 보드
     private int lives;             // 남은 목숨 (기회)
 
+
     public Sudoku(int[][] puzzleBoard, int[][] solutionBoard) {
         this.puzzleBoard = puzzleBoard;
         this.solutionBoard = solutionBoard;
         this.lives = 3; // 기본 목숨을 3번으로 설정
     }
 
-    // 숫자를 입력받아 보드 업데이트 (x, y 좌표에 숫자 num을 넣음)
-    public boolean fillCell(int x, int y, int num) {
+    // 숫자를 입력받아 보드 업데이트 (row, col 좌표에 숫자 num을 넣음)
+    public boolean fillCell(int row, int col, int num) {
         // 정답 보드와 비교해서 맞는지 확인
-        if (solutionBoard[x][y] == num) {
-            puzzleBoard[x][y] = num;
+        if (solutionBoard[row][col] == num) {
+            puzzleBoard[row][col] = num;
             return true;
         } else {
             lives--;  // 틀리면 목숨 감소

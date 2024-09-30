@@ -1,5 +1,7 @@
 package sudoku.global;
 
+import sudoku.domain.Sudoku;
+
 import java.util.Scanner;
 
 public class Utils {
@@ -27,9 +29,9 @@ public class Utils {
         while (true) {
             try {
                 System.out.print(message + ": ");
-                int coord = Integer.parseInt(scanner.nextLine());
+                int coord = Integer.parseInt(scanner.next())-1;
                 if (coord < 0 || coord > 8) {
-                    System.out.println("좌표는 0에서 8 사이여야 합니다.");
+                    System.out.println("좌표는 1에서 9 사이의 숫자를 써주세요.");
                     continue;
                 }
                 return coord;
@@ -40,8 +42,8 @@ public class Utils {
     }
 
     // 좌표와 숫자가 유효한지 확인하는 메서드
-    public static boolean isValidMove(int x, int y, int num) {
-        return (x >= 0 && x < 9 && y >= 0 && y < 9 && num > 0 && num <= 9);
+    public static boolean isValidNum(int row, int col, int num) {
+        return (row >= 0 && row < 9 && col >= 0 && col < 9 && num > 0 && num <= 9);
     }
 
     // 제한 시간을 관리하는 쓰레드 시작 메서드
@@ -49,7 +51,7 @@ public class Utils {
         Thread timerThread = new Thread(() -> {
             try {
                 System.out.println("제한 시간이 " + limitTime + "초로 설정되었습니다.");
-                Thread.sleep(limitTime * 1000);
+                Thread.sleep(limitTime * 1000L);
                 timeoutCallback.run();  // 시간이 끝나면 콜백 실행
             } catch (InterruptedException e) {
                 System.out.println("타이머가 중단되었습니다.");
