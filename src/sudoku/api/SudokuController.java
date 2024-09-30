@@ -27,8 +27,8 @@ public class SudokuController {
                 System.out.println(sudokuService.getSudokuBoard());
 
                 int num = Utils.inputNumber();  // 채울 숫자 입력
-                int x = Utils.inputCoordinate("X 좌표 (0-8)");  // x좌표 입력 (0~8)
-                int y = Utils.inputCoordinate("Y 좌표 (0-8)");  // y좌표 입력 (0~8)
+                int x = Utils.inputCoordinate("행 좌표 (0-8)");  // 행 좌표 입력 (0~8)
+                int y = Utils.inputCoordinate("열 좌표 (0-8)");  // 열 좌표 입력 (0~8)
 
                 // 유효성 검사 적용
                 if (!Utils.isValidMove(x, y, num)) {
