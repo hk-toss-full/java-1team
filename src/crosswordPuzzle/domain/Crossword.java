@@ -23,7 +23,7 @@ public class Crossword {
         public void printDescriptions() {
             System.out.println("단어 설명:");
             for (CrosswordWord word : words) {
-                System.out.println("[" + word.getX() + "," + word.getY() + "] " + word.getDescription());
+                System.out.println(word.getNumber()+ ". " + "[" + word.getX() + "," + word.getY() + "] " + word.getDescription());
             }
         }
 
@@ -59,4 +59,3 @@ public class Crossword {
             return board.isCompleted();
         }
     }
-
