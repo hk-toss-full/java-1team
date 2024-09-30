@@ -19,13 +19,13 @@ public class CrosswordPuzzleService {
         }
 
         // 사용자가 단어를 입력하면 해당 단어를 보드에 삽입
-        public boolean insertWord(int number, String word, int x, int y, CrosswordDirection direction) {
-            return crossword.insertWord(number, word, x, y, direction);
+        public boolean insertWord(int problemNumber, String word) {
+            return crossword.insertWord(problemNumber, word);
         }
 
         // 힌트를 사용하도록 요청
-        public void useHint() {
-            crossword.useHint();
+        public void useHint(int problemNumber) {
+            crossword.useHint(problemNumber);
         }
 
         // 게임 종료 여부를 확인

@@ -30,10 +30,10 @@ public class CrosswordPuzzleController {
 
             switch (option) {
                 case 1:
-                    insertWord();
+                    insertWordByNumber();
                     break;
                 case 2:
-                    crosswordService.useHint();
+                    useHintByNumber();
                     break;
                 case 3:
                     System.out.println("게임을 종료합니다.");
@@ -51,32 +51,15 @@ public class CrosswordPuzzleController {
     }
 
     // 단어 입력 옵션
-    private void insertWord() {
-        System.out.println("번호를 입력하세요");
-        int number = Integer.parseInt(scanner.nextLine());
+    private void insertWordByNumber() {
+        System.out.print("몇 번째 문제의 단어를 입력하시겠습니까? (번호 입력): ");
+        int problemNumber = scanner.nextInt();
+        scanner.nextLine(); // 개행 문자 처리
 
         System.out.print("단어를 입력하세요: ");
         String word = scanner.nextLine();
 
-        System.out.print("단어의 시작 x 좌표를 입력하세요: ");
-        int x = scanner.nextInt();
-
-        System.out.print("단어의 시작 y 좌표를 입력하세요: ");
-        int y = scanner.nextInt();
-        scanner.nextLine();  // 개행 문자 처리
-
-        System.out.print("단어의 방향 (HORIZONTAL/ VERTICAL)을 입력하세요: ");
-        String directionStr = scanner.nextLine().toUpperCase();
-
-        CrosswordDirection direction;
-        try {
-            direction = CrosswordDirection.valueOf(directionStr);
-        } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 방향 입력입니다. 다시 시도하세요.");
-            return;
-        }
-
-        boolean success = crosswordService.insertWord(number, word, x, y, direction);
+        boolean success = crosswordService.insertWord(problemNumber, word);
         if (success) {
             System.out.println("단어가 보드에 성공적으로 삽입되었습니다.");
         } else {
@@ -84,5 +67,13 @@ public class CrosswordPuzzleController {
         }
 
         crosswordService.startGame();  // 현재 보드와 설명을 다시 출력
+    }
+    // 문제 번호를 입력받아 힌트 사용
+    private void useHintByNumber() {
+        System.out.print("몇 번째 문제의 힌트를 사용하시겠습니까? (번호 입력): ");
+        int problemNumber = scanner.nextInt();
+        scanner.nextLine(); // 개행 문자 처리
+
+        crosswordService.useHint(problemNumber); // 특정 문제 번호에 대한 힌트 사용
     }
 }
