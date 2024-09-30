@@ -1,4 +1,4 @@
-package global;
+package sudoku.global;
 
 public class Data {
     static int[][] sudokuTableEasy = {
