@@ -41,7 +41,7 @@ public class Crossword {
         }
 
         // 단어 삽입
-        public boolean insertWord(String wordStr, int x, int y, CrosswordDirection direction) {
+        public boolean insertWord(int number, String wordStr, int x, int y, CrosswordDirection direction) {
             for (CrosswordWord word : words) {
                 if (word.getWord().equals(wordStr) && word.getX() == x && word.getY() == y && word.getDirection() == direction) {
                     boolean success = board.insertWord(word);
