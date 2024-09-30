@@ -1,5 +1,7 @@
 package crosswordPuzzle.domain;
 
+import java.util.Arrays;
+
 public class CrosswordBoard {
 
         private final char[][] board; // 10x10 보드 (빈칸은 □, 채워지지 않는 칸은 ■)
@@ -72,5 +74,3 @@ public class CrosswordBoard {
             return true;
         }
     }
-
-}
