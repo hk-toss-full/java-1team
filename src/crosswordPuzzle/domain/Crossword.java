@@ -1,5 +1,6 @@
 package crosswordPuzzle.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Crossword {
@@ -21,9 +22,31 @@ public class Crossword {
 
         // 단어 설명 출력
         public void printDescriptions() {
-            System.out.println("단어 설명:");
+            // 가로와 세로 문제 리스트를 따로 저장
+            List<CrosswordWord> horizontalWords = new ArrayList<>();
+            List<CrosswordWord> verticalWords = new ArrayList<>();
+
+            // 단어의 방향에 따라 분류
             for (CrosswordWord word : words) {
-                System.out.println(word.getNumber()+ ". " + "[" + word.getX() + "," + word.getY() + "] " + word.getDescription());
+                if (word.getDirection() == CrosswordDirection.HORIZONTAL) {
+                    horizontalWords.add(word);
+                } else if (word.getDirection() == CrosswordDirection.VERTICAL) {
+                    verticalWords.add(word);
+                }
+            }
+
+            // 가로 문제 출력
+            System.out.println("가로");
+            for (CrosswordWord word : horizontalWords) {
+                System.out.printf("[%d, %d] %s\n", word.getX(), word.getY(), word.getDescription());
+            }
+
+            System.out.println("------------------");
+
+            // 세로 문제 출력
+            System.out.println("세로");
+            for (CrosswordWord word : verticalWords) {
+                System.out.printf("[%d, %d] %s\n", word.getX(), word.getY(), word.getDescription());
             }
         }
 
