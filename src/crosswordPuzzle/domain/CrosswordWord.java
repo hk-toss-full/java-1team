@@ -1,9 +1,6 @@
 package crosswordPuzzle.domain;
 
 public class CrosswordWord {
-    package crosswordPuzzle.domain;
-
-    public class CrosswordWord {
         private final String word;                  // 단어
         private final int x;                        // 단어의 시작 x좌표
         private final int y;                        // 단어의 시작 y좌표
@@ -47,4 +44,4 @@ public class CrosswordWord {
             return hint.toString();
         }
     }
-}
+
