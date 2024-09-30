@@ -60,8 +60,7 @@ public class Utils {
     }
 
     // 문자열 입력받는 유틸리티 메서드 (난이도 입력 등)
-    public static String inputString() {
-        System.out.print("입력: ");
-        return scanner.nextLine();
+    public static int inputLevel() {
+        return scanner.nextInt();
     }
 }

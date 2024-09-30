@@ -13,8 +13,8 @@ public class SudokuController {
 
     // 게임 시작 메서드
     public void startGame() {
-        System.out.println("난이도를 선택하세요 (easy, medium, hard): ");
-        String difficulty = Utils.inputString();  // 사용자에게 난이도 입력받기
+        System.out.println("난이도를 선택하세요 - easy:1 / middle:2 / hard:3");
+        int difficulty = Utils.inputLevel();  // 사용자에게 난이도 입력받기
 
         sudokuService.initializeGame(difficulty);  // 난이도에 맞는 게임 초기화
 
@@ -36,7 +36,7 @@ public class SudokuController {
                     continue;
                 }
 
-                boolean success = sudokuService.makeMove(num, x, y);
+                boolean success = sudokuService.fillCell(num, x, y);
                 if (!success) {
                     System.out.println("잘못된 입력입니다.");
                 }

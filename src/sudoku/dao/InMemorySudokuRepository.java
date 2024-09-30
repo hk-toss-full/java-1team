@@ -5,13 +5,13 @@ import sudoku.global.Data;
 public class InMemorySudokuRepository implements SudokuRepository {
 
     @Override
-    public int[][] getSudokuPuzzle(String difficulty) {
-        switch (difficulty.toLowerCase()) {
-            case "easy":
+    public int[][] getSudokuPuzzle(int difficulty) {
+        switch (difficulty) {
+            case 1:
                 return Data.sudokuTableEasy;
-            case "medium":
+            case 2:
                 return Data.sudokuTableMiddle;
-            case "hard":
+            case 3:
                 return Data.sudokuTableHard;
             default:
                 throw new IllegalArgumentException("잘못된 난이도입니다.");
@@ -19,13 +19,13 @@ public class InMemorySudokuRepository implements SudokuRepository {
     }
 
     @Override
-    public int[][] getSudokuSolution(String difficulty) {
-        switch (difficulty.toLowerCase()) {
-            case "easy":
+    public int[][] getSudokuSolution(int difficulty) {
+        switch (difficulty) {
+            case 1:
                 return Data.sudokuTableEasyAnswer;
-            case "medium":
+            case 2:
                 return Data.sudokuTableMiddleAnswer;
-            case "hard":
+            case 3:
                 return Data.sudokuTableHardAnswer;
             default:
                 throw new IllegalArgumentException("잘못된 난이도입니다.");
