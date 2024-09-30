@@ -21,6 +21,7 @@ public class CrosswordMain {
         words.add(new CrosswordWord(8,"설악산", 1, 7, CrosswordDirection.HORIZONTAL, "대한민국의 유명한 산"));
         words.add(new CrosswordWord(9,"성격", 3, 8, CrosswordDirection.HORIZONTAL, "사람의 성품"));
         words.add(new CrosswordWord(10,"편지", 0, 9, CrosswordDirection.HORIZONTAL, "소식을 전하는 글"));
+        words.add(new CrosswordWord(11,"설거지", 1, 7, CrosswordDirection.VERTICAL, "그릇을 닦는 행동"));
 
         // Crossword 및 관련 객체 초기화
         Crossword crossword = new Crossword(words);

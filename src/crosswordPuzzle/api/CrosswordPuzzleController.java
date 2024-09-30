@@ -59,7 +59,14 @@ public class CrosswordPuzzleController {
         System.out.print("단어를 입력하세요: ");
         String word = scanner.nextLine();
 
-        boolean success = crosswordService.insertWord(problemNumber, word);
+        CrosswordDirection direction = getDirectionFromUser();
+
+        if (direction == null) {
+            System.out.println("올바른 방향이 입력되지 않았습니다. 단어 입력을 취소합니다.");
+            return;
+        }
+
+        boolean success = crosswordService.insertWord(problemNumber, word, direction);
         if (success) {
             System.out.println("단어가 보드에 성공적으로 삽입되었습니다.");
         } else {
@@ -68,6 +75,23 @@ public class CrosswordPuzzleController {
 
         crosswordService.startGame();  // 현재 보드와 설명을 다시 출력
     }
+
+    private CrosswordDirection getDirectionFromUser() {
+        System.out.print("단어의 방향을 선택하세요 (1: 가로, 2: 세로) : ");
+        int directionInput = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (directionInput) {
+            case 1:
+                return CrosswordDirection.HORIZONTAL;
+            case 2:
+                return CrosswordDirection.VERTICAL;
+            default:
+                System.out.println("잘못된 입력입니다. 올바른 값을 입력하세요.");
+                return null;
+        }
+    }
+
     // 문제 번호를 입력받아 힌트 사용
     private void useHintByNumber() {
         System.out.print("몇 번째 문제의 힌트를 사용하시겠습니까? (번호 입력): ");

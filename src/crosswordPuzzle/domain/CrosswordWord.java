@@ -11,8 +11,8 @@ public class CrosswordWord {
         public CrosswordWord(int number, String word, int x, int y, CrosswordDirection direction, String description) {
             this.number = number;
             this.word = word;
-            this.x = x;
-            this.y = y;
+            this.x = y;
+            this.y = x;
             this.direction = direction;
             this.description = description;
         }

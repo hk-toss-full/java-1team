@@ -19,8 +19,8 @@ public class CrosswordPuzzleService {
         }
 
         // 사용자가 단어를 입력하면 해당 단어를 보드에 삽입
-        public boolean insertWord(int problemNumber, String word) {
-            return crossword.insertWord(problemNumber, word);
+        public boolean insertWord(int problemNumber, String word, CrosswordDirection direction) {
+            return crossword.insertWord(problemNumber, word, direction);
         }
 
         // 힌트를 사용하도록 요청

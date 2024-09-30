@@ -11,24 +11,15 @@ public class CrosswordData {
     public CrosswordData() {
         // 십자말풀이 문제 데이터를 각 레벨별로 설정
         crosswordDataMap.put("easy", new CrosswordLevelData(
-                new String[]{"타임머신", "사시나무", "지도", "서당", "릿성", "발행성오찬", "주인공", "설악산", "성격", "편지"},
-                new String[]{"[0,0] 타임을 여행하는 장치", "[3,1] 바람에 떨리는 나무", "[0,2] 지도에서 임지의 위치", "[2,3] 서당에 대한 설명", "[4,0] '성(性)'의 조각", "[5,0] 발행된 성과 오찬", "[3,6] 이야기의 중심 인물", "[1,7] 대한민국의 유명한 산", "[3,8] 사람의 성품", "[0,9] 소식을 전하는 글"},
+                new String[]{"타임머신", "사시나무", "지도", "서당", "릿성", "발행성오찬", "주인공", "설악산", "성격", "편지", "설거지"},
+                new String[]{"[0,0] 타임을 여행하는 장치", "[3,1] 바람에 떨리는 나무", "[0,2] 지도에서 임지의 위치", "[2,3] 서당에 대한 설명", "[4,0] '성(性)'의 조각", "[5,0] 발행된 성과 오찬", "[3,6] 이야기의 중심 인물", "[1,7] 대한민국의 유명한 산", "[3,8] 사람의 성품", "[0,9] 소식을 전하는 글", "[1,7] 그릇을 닦는 행동"},
                 new int[][]{
                         {0, 0}, {1, 1}, {2, 0}, {3, 1}, {4, 0},
                         {5, 0}, {6, 0}, {7, 0}, {8, 0}, {9, 0}
                 },
-                new String[]{"HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL"}
+                new String[]{"HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "HORIZONTAL", "VERTICAL"}
         ));
 
-        crosswordDataMap.put("hard", new CrosswordLevelData(
-                new String[]{"타임머신", "사시나무", "지도", "서당", "릿성", "발행성오찬", "주인공", "설악산", "성격", "편지"},
-                new String[]{"[0,0] 시간을 여행하는 장치", "[1,1] 바람에 떨리는 나무", "[2,0] 지도에서 임지의 위치", "[3,1] 서당에 대한 설명", "[4,0] '성(性)'의 조각", "[5,0] 발행된 성과 오찬", "[6,0] 이야기의 중심 인물", "[7,0] 대한민국의 유명한 산", "[8,0] 사람의 성품", "[9,0] 소식을 전하는 글"},
-                new int[][]{
-                        {0, 0}, {1, 1}, {2, 0}, {3, 1}, {4, 0},
-                        {5, 0}, {6, 0}, {7, 0}, {8, 0}, {9, 0}
-                },
-                new String[]{"VERTICAL", "VERTICAL", "VERTICAL", "VERTICAL", "VERTICAL", "VERTICAL", "VERTICAL", "VERTICAL", "VERTICAL", "VERTICAL"}
-        ));
     }
 
     // 레벨에 따른 십자말풀이 데이터 반환

@@ -47,11 +47,19 @@ public class Crossword {
     }
 
         // 단어 삽입
-        public boolean insertWord(int problemNumber, String wordStr) {
+        public boolean insertWord(int problemNumber, String wordStr, CrosswordDirection direction) {
             for (CrosswordWord word : words) {
-                if (word.getNumber() == problemNumber) {
+                if (word.getNumber() == problemNumber && word.getDirection() == direction) {
                     if (word.getWord().equals(wordStr)) {
-                        board.insertWord(word); // 단어를 보드에 삽입
+                        if (direction == CrosswordDirection.HORIZONTAL) {
+                            for(int i = 0; i < wordStr.length(); i++) {
+                                board.insertCharacter(word.getX(), word.getY() + i, wordStr.charAt(i));
+                            }
+                        } else if (direction == CrosswordDirection.VERTICAL) {
+                            for(int i = 0; i < wordStr.length(); i++) {
+                                board.insertCharacter(word.getX() + i, word.getY(), wordStr.charAt(i));
+                            }
+                        }
                         System.out.println("정답입니다! " + word.getDescription() + " 단어가 추가되었습니다.");
                         return true;
                     }

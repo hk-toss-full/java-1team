@@ -34,25 +34,10 @@ public class CrosswordBoard {
             }
         }
 
-        // 단어를 보드에 삽입
-        public boolean insertWord(CrosswordWord word) {
-            int x = word.getX();
-            int y = word.getY();
-            String wordStr = word.getWord();
-
-            if (word.getDirection() == CrosswordDirection.HORIZONTAL) {
-                for (int i = 0; i < wordStr.length(); i++) {
-                    board[x][y + i] = wordStr.charAt(i);
-                }
-            } else if (word.getDirection() == CrosswordDirection.VERTICAL) {
-                for (int i = 0; i < wordStr.length(); i++) {
-                    board[x + i][y] = wordStr.charAt(i);
-                }
-            } else {
-                return false;
-            }
-            return true;
+        public void insertCharacter(int x, int y, char c) {
+            board[x][y] = c;
         }
+
 
         // 보드 출력
         public void printBoard() {
