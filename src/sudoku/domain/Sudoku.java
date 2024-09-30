@@ -1,4 +1,4 @@
 package sudoku.domain;
 
-public class sudoku {
+public class Sudoku {
 }
