@@ -19,15 +19,28 @@ public class SudokuController {
         sudokuService.initializeGame(difficulty);  // 난이도에 맞는 게임 초기화
 
         // 제한 시간 쓰레드 시작
-        Thread timerThread = Utils.startTimer(sudokuService.getLimitTime(difficulty), this::gameOverByTime);
+        Thread timerThread = new Thread(() -> {
+            // 제한 시간이 설정되었다는 메시지 출력
+            Utils.startTimer(sudokuService.getLimitTime(difficulty), this::gameOverByTime);
+        });
+
+        // 먼저 제한 시간 메시지를 출력하고 타이머를 실행한 후 게임 입력 진행
+        timerThread.start();
+
+        try {
+            // 타이머 스레드가 실행될 동안, 약간의 딜레이를 주어 먼저 출력이 완료되도록 보장
+            Thread.sleep(100);  // 짧은 대기 시간 (0.1초)
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // 게임 진행 쓰레드 시작
         Thread gameThread = new Thread(() -> {
             while (!sudokuService.isGameOver() && !isTimeUp) {
                 System.out.println(sudokuService.getSudokuBoard());
 
-                int row = Utils.inputCoordinate("행 좌표 (1-9)");  // 행 좌표 입력 (0~8)
-                int col = Utils.inputCoordinate("열 좌표 (1-9)");  // 열 좌표 입력 (0~8)
+                int row = Utils.inputCoordinate("행 좌표 (1-9)");  // 행 좌표 입력 (1~9)
+                int col = Utils.inputCoordinate("열 좌표 (1-9)");  // 열 좌표 입력 (1~9)
                 int num = Utils.inputNumber();  // 채울 숫자 입력
 
                 // 유효성 검사 적용
@@ -36,20 +49,19 @@ public class SudokuController {
                     continue;
                 }
 
-                boolean success = sudokuService.fillCell(row, col, num);
+                boolean success = sudokuService.fillCell(row, col, num);  // 배열은 0부터 시작하므로 -1
                 if (!success) {
-                    System.out.println("잘못된 입력입니다.");
+                    System.out.println("틀렸습니다. 기회를 1회 차감합니다.");
+                    System.out.println("남은 기회 : "+ sudokuService.getLives());
                 }
 
-                System.out.println("현재 스도쿠 상태:");
-                System.out.println(sudokuService.getSudokuBoard());  // 업데이트된 보드 출력
-
                 if (sudokuService.isGameOver()) {
-                    System.out.println("축하합니다! 게임을 클리어했습니다.");
+                    System.out.println("게임 오버하였습니다.");
                     break;
                 }
             }
         });
+
         gameThread.start();
 
         try {
@@ -68,4 +80,3 @@ public class SudokuController {
         System.exit(0);  // 프로그램 종료
     }
 }
-

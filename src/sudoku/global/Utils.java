@@ -12,7 +12,7 @@ public class Utils {
         while (true) {
             try {
                 System.out.print("채울 숫자를 입력하세요 (1-9): ");
-                int num = Integer.parseInt(scanner.nextLine());
+                int num = Integer.parseInt(scanner.next());
                 if (num < 1 || num > 9) {
                     System.out.println("숫자는 1에서 9 사이여야 합니다.");
                     continue;
