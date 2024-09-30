@@ -13,7 +13,7 @@ public class SudokuController {
 
     // 게임 시작 메서드
     public void startGame() {
-        System.out.println("난이도를 선택하세요 - easy:1 / middle:2 / hard:3");
+        System.out.println("난이도를 선택하세요 - 초급 난이도는 1, 중간 난이도는 2, 고급 난이도는 3을 골라주세요");
         int difficulty = Utils.inputLevel();  // 사용자에게 난이도 입력받기
 
         sudokuService.initializeGame(difficulty);  // 난이도에 맞는 게임 초기화
@@ -39,8 +39,8 @@ public class SudokuController {
             while (!sudokuService.isGameOver() && !isTimeUp) {
                 System.out.println(sudokuService.getSudokuBoard());
 
-                int row = Utils.inputCoordinate("행 좌표 (1-9)");  // 행 좌표 입력 (1~9)
-                int col = Utils.inputCoordinate("열 좌표 (1-9)");  // 열 좌표 입력 (1~9)
+                int row = Utils.inputCoordinate("행 좌표를 입력해주세요.(1-9)");  // 행 좌표 입력 (1~9)
+                int col = Utils.inputCoordinate("열 좌표를 입력해주세요.(1-9)");  // 열 좌표 입력 (1~9)
                 int num = Utils.inputNumber();  // 채울 숫자 입력
 
                 // 유효성 검사 적용
@@ -57,6 +57,11 @@ public class SudokuController {
 
                 if (sudokuService.isGameOver()) {
                     System.out.println("게임 오버하였습니다.");
+                    break;
+                }
+
+                if (sudokuService.isGameClear()) {
+                    System.out.println("게임 클리어하였습니다!");
                     break;
                 }
             }

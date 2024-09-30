@@ -33,6 +33,10 @@ public class SudokuService {
         return sudokuGame.isGameOver();
     }
 
+    public boolean isGameClear() {
+        return sudokuGame.isGameClear();
+    }
+
     // 현재 스도쿠 보드 출력
     public String getSudokuBoard() {
         return sudokuGame.getSudokuBoard();

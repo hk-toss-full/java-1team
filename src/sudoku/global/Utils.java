@@ -50,7 +50,7 @@ public class Utils {
     public static Thread startTimer(int limitTime, Runnable timeoutCallback) {
         Thread timerThread = new Thread(() -> {
             try {
-                System.out.println("제한 시간이 " + limitTime + "초로 설정되었습니다.");
+                System.out.println("제한 시간이 " + (limitTime/60)+"분으로 설정되었습니다.");
                 Thread.sleep(limitTime * 1000L);
                 timeoutCallback.run();  // 시간이 끝나면 콜백 실행
             } catch (InterruptedException e) {

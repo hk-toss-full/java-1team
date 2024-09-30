@@ -29,11 +29,14 @@ public class Sudoku {
         return lives;
     }
 
-    // 게임이 종료되었는지 확인 (모든 칸이 채워졌는지 확인)
+    // 게임이 종료되었는지 확인 (기회 관련)
     public boolean isGameOver() {
-        if (lives <= 0) {
-            return true; // 목숨이 다했으면 게임 종료
-        }
+        if (lives <= 0) return true; // 목숨이 다했으면 게임 종료
+        else return false;
+    }
+
+    // 게임을 클리어했는지 확인 (모든 칸이 채워졌는지 확인)
+    public boolean isGameClear(){
         // 빈칸이 남아있는지 확인
         for (int i = 0; i < puzzleBoard.length; i++) {
             for (int j = 0; j < puzzleBoard[i].length; j++) {
